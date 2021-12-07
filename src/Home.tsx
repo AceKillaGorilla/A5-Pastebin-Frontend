@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LatestPasties from "./LatestPasties";
 
 export interface PastieProps {
@@ -17,13 +17,24 @@ export default function Home(): JSX.Element {
     setPasties(jsonBody);
   }
 
+  useEffect(() => {
+    fetchPasties();
+  }, []);
+
+  console.log(pasties);
+
   return (
-    <LatestPasties
-      key={id}
-      id={id}
-      title={title}
-      contents={contents}
-      created_timestamp={created_timestamp}
-    />
+    <>
+      <p> hi</p>
+      {pasties.map((pastie) => (
+        <LatestPasties
+          key={pastie.id}
+          id={pastie.id}
+          title={pastie.title}
+          contents={pastie.contents}
+          created_timestamp={pastie.created_timestamp}
+        />
+      ))}
+    </>
   );
 }
