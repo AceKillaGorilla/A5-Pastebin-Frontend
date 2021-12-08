@@ -1,5 +1,6 @@
 import { PastieProps } from "./Home";
 import { useState } from "react";
+import "./latestpasties.css";
 
 export default function LatestPasties({
   title,
@@ -30,7 +31,9 @@ export default function LatestPasties({
         <button onClick={() => setCollapsed(!collapsed)}>{buttonIcon}</button>
       </div>
       <br />
-      <p className="mb-1">{contents}</p>
+      <p className="mb-1">
+        {collapsed ? <p className="line-clamp">{contents}</p> : contents}
+      </p>
       <br />
       <small>{sanitised_timestamp}</small>
     </a>
