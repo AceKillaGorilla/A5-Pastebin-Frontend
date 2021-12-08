@@ -20,11 +20,19 @@ export default function LatestPasties({
   const sanitised_timestamp = `${split_timestamp[0]} - ${hours.join("")}`;
 
   return (
-    <>
-      <h3>{title}</h3>
-      <p>{contents}</p>
-      <p>{sanitised_timestamp}</p>
-      <button onClick={() => setCollapsed(!collapsed)}>{buttonIcon}</button>
-    </>
+    <a
+      href="# "
+      className="list-group-item list-group-item-action"
+      aria-current="true"
+    >
+      <div className="d-flex w-100 justify-content-between">
+        <h3 className="mb-1">{title}</h3>
+        <button onClick={() => setCollapsed(!collapsed)}>{buttonIcon}</button>
+      </div>
+      <br />
+      <p className="mb-1">{contents}</p>
+      <br />
+      <small>{sanitised_timestamp}</small>
+    </a>
   );
 }

@@ -25,16 +25,31 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      <p> hi</p>
-      {pasties.map((pastie) => (
-        <LatestPasties
-          key={pastie.id}
-          id={pastie.id}
-          title={pastie.title}
-          contents={pastie.contents}
-          created_timestamp={pastie.created_timestamp}
-        />
-      ))}
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <br />
+            <h1>Pastebin</h1>
+            <br />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-8">this is the large section</div>
+          <div className="col-sm-4">
+            <div className="list-group">
+              {pasties.map((pastie) => (
+                <LatestPasties
+                  key={pastie.id}
+                  id={pastie.id}
+                  title={pastie.title}
+                  contents={pastie.contents}
+                  created_timestamp={pastie.created_timestamp}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
