@@ -11,18 +11,20 @@ export default function AddPastie(props: FetchingProps): JSX.Element {
 
   async function handleSubmitNewPastie() {
     //make sure contents aren't null"
-    await axios
-      .post("https://c3a5-pastebin.herokuapp.com/", {
-        title: title,
-        contents: contents,
-      })
-      .then((response) => {
-        props.fetchPasties();
-      })
-      //reset text box?
-      .catch((error) => {
-        console.log(error);
-      });
+    if (contents !== "") {
+      await axios
+        .post("https://c3a5-pastebin.herokuapp.com/", {
+          title: title,
+          contents: contents,
+        })
+        .then((response) => {
+          props.fetchPasties();
+        })
+        //reset text box?
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     setTitle("");
     setContents("");
   }
