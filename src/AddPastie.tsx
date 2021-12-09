@@ -5,11 +5,12 @@ interface FetchingProps {
   fetchPasties: () => void;
 }
 
-export default function AddPastie(): JSX.Element {
+export default function AddPastie(props: FetchingProps): JSX.Element {
   const [title, setTitle] = useState<string>("");
   const [contents, setContents] = useState<string>("");
 
   async function handleSubmitNewPastie() {
+    //make sure contents aren't null"
     await axios
       .post("https://c3a5-pastebin.herokuapp.com/", {
         title: title,
