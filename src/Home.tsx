@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import LatestPasties from "./LatestPasties";
+import AddPastie from "./AddPastie";
 
 export interface PastieProps {
   id: number;
@@ -34,7 +35,11 @@ export default function Home(): JSX.Element {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-8">this is the large section</div>
+          <div className="col-sm-8">
+            <div className="list-group">
+              <AddPastie fetchPasties={fetchPasties} />
+            </div>
+          </div>
           <div className="col-sm-4">
             <div className="list-group">
               {pasties.map((pastie) => (
